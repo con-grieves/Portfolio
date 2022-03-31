@@ -79,6 +79,8 @@ hr {
   margin: 1.875em 0px;
   font-size: 20px;
   color: #646464;
+  -webkit-box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.75);
 }
 
 .btn:hover {
@@ -290,7 +292,7 @@ hr {
           animation-duration: 1s;
   -webkit-animation-timing-function: ease-in;
           animation-timing-function: ease-in;
-  margin-bottom: 150px;
+  margin-bottom: 75px;
 }
 
 @-webkit-keyframes divSliderTop {
@@ -360,7 +362,7 @@ hr {
 }
 
 .introduction h1 {
-  margin-bottom: 25px;
+  margin-top: 25px;
 }
 
 .introduction p {
@@ -391,7 +393,7 @@ hr {
   border: 3px solid #7d7c7c;
   border-radius: 10px;
   width: 500px;
-  margin: 75px auto;
+  margin: 75px auto 75px auto;
   background-color: #3f3f46;
   -webkit-box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.75);
   box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.75);

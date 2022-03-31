@@ -56,6 +56,10 @@ hr {
     margin: 1.875em 0px;
     font-size: 20px;
     color: rgb(100, 100, 100);
+
+    -webkit-box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.75);
+    box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.75);
   }
  .btn:hover {
      animation-name: btnHover;
@@ -173,7 +177,7 @@ hr {
         animation-iteration-count: 1;
         animation-duration: 1s;
         animation-timing-function: ease-in;
-        margin-bottom: 150px;
+        margin-bottom: 75px;
     }
 }
 @keyframes divSliderTop {
@@ -191,7 +195,7 @@ hr {
 
 // Introduction
 .introduction h1 {
-    margin-bottom: 25px;
+    margin-top: 25px;
 }
 .introduction {
     p {font-size: 28px;}
@@ -199,7 +203,6 @@ hr {
 .intro-coffee {
     margin: 20px 0 150px 0;
 }
-
 // About
 .about {
     .const { color: rgb(98, 132, 184) }
@@ -211,7 +214,7 @@ hr {
     border: 3px solid rgb(125, 124, 124);
     border-radius: 10px;
     width: 500px;
-    margin: 75px auto;
+    margin: 75px auto 75px auto;
     background-color: #3f3f46;
     p {
         background-color: #3f3f46;
@@ -277,7 +280,7 @@ hr {
 .skills {
     img {
         height: 90px;
-        width: 90px;
+        width: 90px; 
     }
     img:hover {
         animation-name: imgHover;
