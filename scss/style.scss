@@ -47,6 +47,30 @@ h6 {
 hr {
     margin: 25px 0;
 }
+.btn {
+    width: 150px;
+    height: 50px;
+    background-color: var(--mainTextColorDark);
+    border-radius: 10px;
+    border:none;
+    margin: 1.875em 0px;
+    font-size: 20px;
+    color: rgb(100, 100, 100);
+  }
+ .btn:hover {
+     animation-name: btnHover;
+     animation-duration: 0.25s;
+     animation-iteration-count: 1;
+     animation-fill-mode: forwards;
+ }
+ @keyframes btnHover {
+     from {}
+     to {
+     background-color: var(--mainColorDark);
+     color: var(--mainTextColorDark);
+     border: 2px solid var(--mainTextColorDark);
+     }
+ }
 
 // Page-load Animation
 .introduction, .about, .skills, .example {
@@ -233,6 +257,12 @@ hr {
     margin: 15px 45px;
     background-color: white;
 }
+.app-window-cursor {
+    opacity: 0;
+    color: var(--mainTextColorDark);
+    font-size: 32px;
+}
+
 
 // Skills
 .grid-container {
@@ -262,6 +292,9 @@ hr {
     a {
         color: var(--mainTextColorDark);
     }
+    .btn-container {
+        text-align: center;
+    }
 }
 // Example Page
 .example {
@@ -278,43 +311,32 @@ hr {
         border-radius: 10px;
         margin-bottom: 25px;;
     }
+    img:hover {
+        animation-name: imgAnimation;
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: 1;
+    }
     ul {
         list-style: none;
     }
     hr {
         margin-bottom: 50px;
     }
-    .btn {
-        width: 150px;
-        height: 50px;
-        background-color: var(--mainTextColorDark);
-        border-radius: 10px;
-        border:none;
-        margin: 1.875em 0px;
-        font-size: 20px;
-        color: rgb(100, 100, 100);
-      }
-     .btn:hover {
-         animation-name: btnHover;
-         animation-duration: 0.25s;
-         animation-iteration-count: 1;
-         animation-fill-mode: forwards;
-     }
-     @keyframes btnHover {
-         from {}
-         to {
-         background-color: var(--mainColorDark);
-         color: var(--mainTextColorDark);
-         border: 2px solid var(--mainTextColorDark);
-         }
-     } 
+    
 }
-
+ 
 // Footer
 .footer {
     text-align: center;
 }
 // Media Queries
+@media screen and (min-width: 1200px) {
+    @keyframes imgAnimation {
+        from {width: 500px; height: 500px;}
+        to {width: 525px; height: 525px;}
+    }
+}
 @media screen and (max-width: 1200px) {
     .main-container {
         width: 70%;
@@ -324,6 +346,10 @@ hr {
             width: 90%;
         }
     }
+    @keyframes imgAnimation {
+        from {width: 500px; height: 500px;}
+        to {width: 525px; height: 525px;}
+    }
 }
 @media screen and (max-width: 600px) {
     .header {
@@ -332,7 +358,12 @@ hr {
         }
     }
     .app-window {
-        width: 90%;
+        width: 100%;
+    }
+    .app-window-text {
+        p {
+            font-size: 14px;
+        }
     }
     .example {
         img {
@@ -342,5 +373,15 @@ hr {
         .btn {
             width: 100px;
         }
+    }
+    .logo {
+        h5 {
+            width: 100px;
+            font-size: 18px;
+        }
+    }
+    @keyframes imgAnimation {
+        from {width: 90%px; height: 300px;}
+        to {width: 95%; height: 330px;}
     }
 }
