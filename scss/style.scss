@@ -1,0 +1,324 @@
+// General
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Ubuntu';
+}
+
+body {
+    background-color: var(--mainColorDark);
+}
+
+// Font Sizing & Coloring
+:root {
+    --mainColorDark: #3C3D47;
+    --secondaryColorDark: #c1c1c1;
+    --mainTextColorDark: #EEF2FF;
+    --secondaryTextColorDark: #F95959;
+    --mainTextHoverColor: #7f8183;
+    --secondaryTextHoverColor: red;
+}
+h1 { font-size: 56px; }
+h2 { font-size: 36px; }
+h3 { font-size: 28px; }
+h4 { font-size: 24px; }
+h5 { font-size: 20px; }
+h6 { font-size: 18px; }
+p {font-size: 24px;}
+
+h1, h2, h3, h4, h5, p {
+    color: var(--mainTextColorDark);
+}
+h6, li, span, label, input, textarea {
+    color: var(--secondaryTextColorDark);
+}
+
+// Site-wide
+a {
+    text-decoration: none;
+}
+.main-container {
+    width: 750px;
+    margin: 50px auto;
+}
+h6 {
+    margin-bottom: 25px;
+}
+hr {
+    margin: 25px 0;
+}
+
+// Page-load Animation
+.introduction, .about, .skills, .example {
+    animation-name: textSlide;
+    animation-iteration-count: 1;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+}
+@keyframes textSlide {
+    from { transform: translateY(10px); opacity: 0; }
+    to { transform: translateY(0%); opacity: 1; }
+}
+
+// Header
+.header {
+    .main-container {
+        width: 1250px;
+        margin: 50px auto;
+        justify-content: space-between;
+        align-items: center;
+    }
+    ul {
+        list-style: none;
+        display: flex;
+        gap: 50px;
+    }
+    div {
+        display: flex;
+        text-align: center;
+        align-items: center;
+    }
+    img {
+        width: 40px;
+        height: 40px;
+        margin-right: 15px;
+        color: var(--mainTextColorDark);
+    }
+}
+.nav-link-current {
+    h5 {
+        color: var(--secondaryTextColorDark);
+        border-bottom: 4px solid currentColor;
+        border-radius: 3px;
+        animation-name: navLinkCurrent;
+        animation-iteration-count: 1;
+        animation-duration: 1s;
+    }
+}
+.nav-link:hover {
+    animation-name: navLinkHover;
+    animation-duration: 0.25s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+@keyframes navLinkCurrent {
+    from {
+        color: var(--mainTextColorDark);
+    }
+    to {
+        color: var(--secondaryTextColorDark);
+    }
+}
+@keyframes navLinkHover {
+    from {
+        border-bottom-width: 0%
+    }
+    to {
+        border-bottom: 4px solid var(--mainTextHoverColor);
+        border-radius: 3px;
+        border-bottom-width: 100%;
+        color: var(--mainTextHoverColor)
+    }
+}
+
+// Header Divider
+.header-divider {
+    .DivTop {
+        background-color: var(--secondaryColorDark);
+        width: 78.5%;
+        height: 8px;
+        animation-name: divSliderTop;
+        animation-iteration-count: 1;
+        animation-duration: 1s;
+        animation-timing-function: ease-in;
+    }
+    .DivMiddle {
+        background-color: rgb(211, 151, 78);
+        width: 90%;
+        height: 8px;
+        animation-name: divSliderMiddle;
+        animation-iteration-count: 1;
+        animation-duration: 1s;
+        animation-timing-function: ease-in;
+    }
+    .DivBottom {
+        background-color: var(--secondaryTextColorDark);
+        width: 67%;
+        height: 8px;
+        animation-name: divSliderBot;
+        animation-iteration-count: 1;
+        animation-duration: 1s;
+        animation-timing-function: ease-in;
+        margin-bottom: 150px;
+    }
+}
+@keyframes divSliderTop {
+    from {width: 0%; opacity: 0;}
+    to {width: 78.5%; opacity: 1;}
+}
+@keyframes divSliderMiddle {
+    from {width: 0%; opacity: 0;}
+    to {width: 90%; opacity: 1;}
+}
+@keyframes divSliderBot {
+    from {width: 0%; opacity: 0;}
+    to {width: 67%; opacity: 1;}
+}
+
+// Introduction
+.introduction h1 {
+    margin-bottom: 25px;
+}
+.introduction {
+    p {font-size: 28px;}
+}
+.intro-coffee {
+    margin: 20px 0 150px 0;
+}
+
+// About
+.about {
+    .const { color: rgb(98, 132, 184) }
+    .string { color: rgb(165, 103, 69) }
+    .num { color: rgb(137, 205, 137) }
+    .bracket { color: yellow }
+}
+.app-window {
+    border: 3px solid rgb(125, 124, 124);
+    border-radius: 10px;
+    width: 500px;
+    margin: 75px auto;
+    background-color: #3f3f46;
+    p {
+        background-color: #3f3f46;
+    }
+
+    -webkit-box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.75);
+    box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.75);
+}
+.app-window-nav {
+    border-bottom: 3px solid rgb(114, 114, 114);
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3c3c41;
+}
+.app-window-dots {
+    display: flex;
+    padding: 5px;
+
+    .dot {
+        height: 13px;
+        width: 13px;
+        border-radius: 50%;
+        margin: 2px;
+
+        -webkit-box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.75);
+        box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.75);
+    }
+    #dot-1 {
+        background-color: #EC6A5F;
+    }
+    #dot-2 {
+        background-color: #F5BF4F;
+    }
+    #dot-3 {
+        background-color: #296018;
+    }
+}
+.app-window-text {
+    margin: 15px 45px;
+    background-color: white;
+}
+
+// Skills
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+    margin: 75px 0;
+}
+.grid-item {
+    padding: 10px;
+}
+.skills {
+    img {
+        height: 90px;
+        width: 90px;
+    }
+    img:hover {
+        animation-name: imgHover;
+        animation-duration: 1s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+    @keyframes imgHover {
+        0% {width: 90px; height: 90px}
+        100% {width:110px; height: 110px}
+    }
+    a {
+        color: var(--mainTextColorDark);
+    }
+}
+// Example Page
+.example {
+    h2 {
+        margin-bottom: 25px;;
+    }
+    h6 {
+        margin: 25px 0;
+    }
+    img {
+        width: 500px;
+        height: 500px;
+        border: 1px solid gray;
+        border-radius: 10px;
+        margin-bottom: 25px;;
+    }
+    ul {
+        list-style: none;
+    }
+    .btn {
+        width: 150px;
+        height: 50px;
+        background-color: var(--mainTextColorDark);
+        border-radius: 10px;
+        border:none;
+        margin: 1.875em 0px;
+        font-size: 20px;
+        color: rgb(100, 100, 100);
+      }
+     .btn:hover {
+         animation-name: btnHover;
+         animation-duration: 0.25s;
+         animation-iteration-count: 1;
+         animation-fill-mode: forwards;
+     }
+     @keyframes btnHover {
+         from {}
+         to {
+         background-color: var(--mainColorDark);
+         color: var(--mainTextColorDark);
+         border: 2px solid var(--mainTextColorDark);
+         }
+     } 
+}
+
+// Footer
+.footer {
+    text-align: center;
+}
+// Media Queries
+@media screen and (max-width: 1200px) {
+    .main-container {
+        width: 70%;
+    }
+    .header {
+        .main-container {
+            width: 90%;
+        }
+    }
+}
