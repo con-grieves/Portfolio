@@ -476,8 +476,8 @@ hr {
 .skills img:hover {
   -webkit-animation-name: imgHover;
           animation-name: imgHover;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
+  -webkit-animation-duration: 1.25s;
+          animation-duration: 1.25s;
   -webkit-animation-iteration-count: 1;
           animation-iteration-count: 1;
   -webkit-animation-fill-mode: forwards;
@@ -489,9 +489,13 @@ hr {
     width: 90px;
     height: 90px;
   }
+  50% {
+    width: 95px;
+    height: 95px;
+  }
   100% {
-    width: 110px;
-    height: 110px;
+    width: 90px;
+    height: 90px;
   }
 }
 
@@ -500,9 +504,13 @@ hr {
     width: 90px;
     height: 90px;
   }
+  50% {
+    width: 95px;
+    height: 95px;
+  }
   100% {
-    width: 110px;
-    height: 110px;
+    width: 90px;
+    height: 90px;
   }
 }
 
@@ -533,8 +541,8 @@ hr {
 .example img:hover {
   -webkit-animation-name: imgAnimation;
           animation-name: imgAnimation;
-  -webkit-animation-duration: 0.5s;
-          animation-duration: 0.5s;
+  -webkit-animation-duration: 1.25s;
+          animation-duration: 1.25s;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
   -webkit-animation-iteration-count: 1;
@@ -555,23 +563,31 @@ hr {
 
 @media screen and (min-width: 1200px) {
   @-webkit-keyframes imgAnimation {
-    from {
+    0% {
       width: 500px;
       height: 500px;
     }
-    to {
-      width: 525px;
-      height: 525px;
+    50% {
+      width: 510px;
+      height: 510px;
+    }
+    100% {
+      width: 500px;
+      height: 500px;
     }
   }
   @keyframes imgAnimation {
-    from {
+    0% {
       width: 500px;
       height: 500px;
     }
-    to {
-      width: 525px;
-      height: 525px;
+    50% {
+      width: 510px;
+      height: 510px;
+    }
+    100% {
+      width: 500px;
+      height: 500px;
     }
   }
 }
@@ -584,23 +600,31 @@ hr {
     width: 90%;
   }
   @-webkit-keyframes imgAnimation {
-    from {
+    0% {
       width: 500px;
       height: 500px;
     }
-    to {
-      width: 525px;
-      height: 525px;
+    50% {
+      width: 510px;
+      height: 510px;
+    }
+    100% {
+      width: 500px;
+      height: 500px;
     }
   }
   @keyframes imgAnimation {
-    from {
+    0% {
       width: 500px;
       height: 500px;
     }
-    to {
-      width: 525px;
-      height: 525px;
+    50% {
+      width: 510px;
+      height: 510px;
+    }
+    100% {
+      width: 500px;
+      height: 500px;
     }
   }
 }
@@ -627,23 +651,31 @@ hr {
     font-size: 18px;
   }
   @-webkit-keyframes imgAnimation {
-    from {
+    0% {
       width: 90%px;
       height: 300px;
     }
-    to {
-      width: 95%;
-      height: 330px;
+    50% {
+      width: 92%;
+      height: 310px;
+    }
+    100% {
+      width: 90%px;
+      height: 300px;
     }
   }
   @keyframes imgAnimation {
-    from {
+    0% {
       width: 90%px;
       height: 300px;
     }
-    to {
-      width: 95%;
-      height: 330px;
+    50% {
+      width: 92%;
+      height: 310px;
+    }
+    100% {
+      width: 90%px;
+      height: 300px;
     }
   }
 }

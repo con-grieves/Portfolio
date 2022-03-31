@@ -281,13 +281,14 @@ hr {
     }
     img:hover {
         animation-name: imgHover;
-        animation-duration: 1s;
+        animation-duration: 1.25s;
         animation-iteration-count: 1;
         animation-fill-mode: forwards;
     }
     @keyframes imgHover {
         0% {width: 90px; height: 90px}
-        100% {width:110px; height: 110px}
+        50% {width:95px; height: 95px}
+        100% {width: 90px; height: 90px}
     }
     a {
         color: var(--mainTextColorDark);
@@ -296,6 +297,7 @@ hr {
         text-align: center;
     }
 }
+
 // Example Page
 .example {
     h2 {
@@ -313,7 +315,7 @@ hr {
     }
     img:hover {
         animation-name: imgAnimation;
-        animation-duration: 0.5s;
+        animation-duration: 1.25s;
         animation-fill-mode: forwards;
         animation-iteration-count: 1;
     }
@@ -333,8 +335,9 @@ hr {
 // Media Queries
 @media screen and (min-width: 1200px) {
     @keyframes imgAnimation {
-        from {width: 500px; height: 500px;}
-        to {width: 525px; height: 525px;}
+        0% {width: 500px; height: 500px;}
+        50% {width: 510px; height: 510px;}
+        100% {width: 500px; height: 500px;}
     }
 }
 @media screen and (max-width: 1200px) {
@@ -347,8 +350,9 @@ hr {
         }
     }
     @keyframes imgAnimation {
-        from {width: 500px; height: 500px;}
-        to {width: 525px; height: 525px;}
+        0% {width: 500px; height: 500px;}
+        50% {width: 510px; height: 510px;}
+        100% {width: 500px; height: 500px;}
     }
 }
 @media screen and (max-width: 600px) {
@@ -381,7 +385,8 @@ hr {
         }
     }
     @keyframes imgAnimation {
-        from {width: 90%px; height: 300px;}
-        to {width: 95%; height: 330px;}
+        0% {width: 90%px; height: 300px;}
+        50% {width: 92%; height: 310px;}
+        100% {width: 90%px; height: 300px;}
     }
 }
