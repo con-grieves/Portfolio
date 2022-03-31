@@ -281,6 +281,9 @@ hr {
     ul {
         list-style: none;
     }
+    hr {
+        margin-bottom: 50px;
+    }
     .btn {
         width: 150px;
         height: 50px;
@@ -319,6 +322,25 @@ hr {
     .header {
         .main-container {
             width: 90%;
+        }
+    }
+}
+@media screen and (max-width: 600px) {
+    .header {
+        ul {
+            gap: 15px;
+        }
+    }
+    .app-window {
+        width: 90%;
+    }
+    .example {
+        img {
+            width: 90%;
+            height: 300px;
+        }
+        .btn {
+            width: 100px;
         }
     }
 }
