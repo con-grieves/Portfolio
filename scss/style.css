@@ -114,9 +114,9 @@ hr {
   }
 }
 
-.introduction, .about, .skills, .example {
-  -webkit-animation-name: textSlide;
-          animation-name: textSlide;
+.page-header {
+  -webkit-animation-name: page-header-animation;
+          animation-name: page-header-animation;
   -webkit-animation-iteration-count: 1;
           animation-iteration-count: 1;
   -webkit-animation-duration: 1s;
@@ -125,7 +125,21 @@ hr {
           animation-timing-function: ease-in;
 }
 
-@-webkit-keyframes textSlide {
+.page-content {
+  -webkit-animation-name: page-content-animation;
+          animation-name: page-content-animation;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-timing-function: ease-in;
+          animation-timing-function: ease-in;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+@-webkit-keyframes page-header-animation {
   from {
     -webkit-transform: translateY(10px);
             transform: translateY(10px);
@@ -138,7 +152,33 @@ hr {
   }
 }
 
-@keyframes textSlide {
+@keyframes page-header-animation {
+  from {
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes page-content-animation {
+  from {
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes page-content-animation {
   from {
     -webkit-transform: translateY(10px);
             transform: translateY(10px);
@@ -557,6 +597,10 @@ hr {
 
 .example hr {
   margin-bottom: 50px;
+}
+
+.example-header {
+  margin-bottom: 150px;
 }
 
 .footer {
