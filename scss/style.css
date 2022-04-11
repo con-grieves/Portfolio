@@ -33,7 +33,7 @@ h4 {
 }
 
 h5 {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 h6 {
@@ -186,7 +186,7 @@ hr {
 
 .header .main-container {
   width: 1250px;
-  margin: 50px auto;
+  margin: 25px auto;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -332,8 +332,8 @@ hr {
   margin-bottom: 75px;
 }
 
-.introduction h1 {
-  margin-top: 25px;
+.page-header h1 {
+  margin-top: 150px;
 }
 
 .introduction p {

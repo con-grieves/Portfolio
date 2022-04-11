@@ -21,7 +21,7 @@ h1 { font-size: 56px; }
 h2 { font-size: 36px; }
 h3 { font-size: 28px; }
 h4 { font-size: 24px; }
-h5 { font-size: 20px; }
+h5 { font-size: 18px; }
 h6 { font-size: 18px; }
 p {font-size: 24px;}
 
@@ -104,7 +104,7 @@ hr {
 .header {
     .main-container {
         width: 1250px;
-        margin: 50px auto;
+        margin: 25px auto;
         justify-content: space-between;
         align-items: center;
     }
@@ -207,8 +207,8 @@ hr {
 // }
 
 // Introduction
-.introduction h1 {
-    margin-top: 25px;
+.page-header h1 {
+    margin-top: 150px;
 }
 .introduction {
     p {font-size: 28px;}
