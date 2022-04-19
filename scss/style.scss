@@ -331,8 +331,12 @@ hr {
     }
     
 }
-.example-header {
+.page-header {
     margin-bottom: 150px;
+
+    p {
+        margin-top: 15px;
+    }
 }
  
 // Footer

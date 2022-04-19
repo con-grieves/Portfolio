@@ -530,8 +530,12 @@ hr {
   margin-bottom: 50px;
 }
 
-.example-header {
+.page-header {
   margin-bottom: 150px;
+}
+
+.page-header p {
+  margin-top: 15px;
 }
 
 .footer {
