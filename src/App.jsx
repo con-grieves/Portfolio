@@ -58,10 +58,10 @@ function App() {
       <CssBaseline />
       <Box sx={{ minHeight: '100vh', backgroundColor: 'background.default' }}>
         <AppBar position="sticky" color="transparent" elevation={0} sx={{ py: 1 }}> 
-          <Container maxWidth="lg" sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <Container maxWidth="lg" disableGutters sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', px: 0 }}>
             <Stack direction="row" alignItems="center" spacing={1}>
               <Box component="img" src="/Images/coffee-cup(3).png" alt="Connor logo" sx={{ width: 40, height: 40 }} />
-              <Typography variant="h6" sx={{ fontWeight: 500, letterSpacing: 1 }}>
+              <Typography variant="h7" sx={{ fontWeight: 1000, letterSpacing: 0.5 }}>
                 CONNOR GRIEVES
               </Typography>
             </Stack>
@@ -90,10 +90,10 @@ function App() {
 
         <Box component="main" id="home" sx={{ pt: 8, pb: 8 }}>
           <Container maxWidth="lg">
-            <Typography variant="h2" gutterBottom>
+            <Typography variant="h1" gutterBottom>
               Hi, I'm Connor.
             </Typography>
-            <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 720, lineHeight: 1.8 }}>
+            <Typography variant="h5" color="text.secondary" sx={{ maxWidth: 720, lineHeight: 1.8 }}>
               I'm currently in working in Newcastle as a Software Developer at Recite Me, helping to make the internet a more accessible place.
             </Typography>
           </Container>
