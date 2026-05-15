@@ -131,17 +131,20 @@ function App() {
                 Software Developer / Indie Hacker
               </Typography>
               <Typography variant="h1" component="h1" sx={{ mb: 3, lineHeight: 1.02, letterSpacing: '-0.03em' }}>
-                Modern, minimal, and accessible digital experiences that feel effortless.
+                Hi, I'm Connor !<br></br>
+                <Typography variant="h2" component="h2" sx={{ mt: 4, letterSpacing: '-0.02em', color: 'primary.main' }}>
+                  Based in the North-East of England, I write code, build products and take photos. Thanks for stopping by.
+                </Typography>
               </Typography>
               <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 600, mx: { xs: 0, md: 'auto' }, mb: 5, lineHeight: 1.8 }}>
-                I currently enjoy building field-leading Accessibility Tools as a Software Developer at <Link href="https://reciteme.com/" underline="none" target="_blank" rel="noopener noreferrer" sx={{ color: 'reciteme.main' }}>Recite Me</Link> whilst also building Succinct, User-Focussed products and applications in my own time. 
+                I'm currently building field-leading Accessibility Tools as a Software Developer at <Link href="https://reciteme.com/" underline="none" target="_blank" rel="noopener noreferrer" sx={{ color: 'reciteme.main' }}>Recite Me</Link> whilst also creating Succinct, User-Focussed products and applications in my own time.
               </Typography>
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent={{ md: 'center' }}>
                 <Button href="#projects" variant="contained" size="large">
                   View Products
                 </Button>
                 <Button href="#about" variant="outlined" size="large" color="secondary">
-                  Connect with me
+                  My Photography
                 </Button>
               </Stack>
             </Box>
