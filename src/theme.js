@@ -5,51 +5,57 @@ export const getTheme = (mode) =>
     palette: {
       mode,
       primary: {
-        main: '#EEF2FF',
+        main: '#EDEFFF',
       },
       secondary: {
-        main: '#F95959',
+        main: '#A78BFA',
       },
       background: {
-        default: mode === 'dark' ? '#2A2A2B' : '#F7F9FC',
-        paper: mode === 'dark' ? '#35363B' : '#FFFFFF',
+        default: mode === 'dark' ? '#090A11' : '#F8F9FF',
+        paper: mode === 'dark' ? '#11151F' : '#FFFFFF',
       },
       text: {
-        primary: mode === 'dark' ? '#EEF2FF' : '#1F2937',
-        secondary: mode === 'dark' ? '#F95959' : '#4B5563',
+        primary: mode === 'dark' ? '#F7F8FF' : '#111827',
+        secondary: mode === 'dark' ? '#A0A7BF' : '#6B7280',
       },
     },
     typography: {
       fontFamily: ['Ubuntu', 'Roboto', 'Arial', 'sans-serif'].join(','),
       h1: {
-        fontWeight: 700,
-        fontSize: '3.5rem',
+        fontWeight: 800,
+        fontSize: 'clamp(3rem, 6vw, 4.25rem)',
       },
       h2: {
-        fontWeight: 600,
+        fontWeight: 700,
         fontSize: '2rem',
       },
       h6: {
-        fontWeight: 500,
+        fontWeight: 700,
+        letterSpacing: 1,
       },
       body1: {
         fontSize: '1rem',
+        lineHeight: 1.8,
+      },
+      button: {
+        textTransform: 'none',
+        fontWeight: 700,
       },
     },
     components: {
       MuiButton: {
         styleOverrides: {
           root: {
+            borderRadius: 999,
             textTransform: 'none',
-            borderRadius: 14,
           },
         },
       },
       MuiCard: {
         styleOverrides: {
           root: {
-            borderRadius: 20,
-            boxShadow: '0 18px 48px rgba(0, 0, 0, 0.12)',
+            borderRadius: 28,
+            boxShadow: '0 30px 60px rgba(0, 0, 0, 0.12)',
           },
         },
       },
