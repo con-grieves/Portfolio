@@ -83,7 +83,7 @@ function App() {
             sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', px: { xs: 2, sm: 3, md: 4 } }}
           >
             <Stack direction="row" alignItems="center" spacing={1.5}>
-              <Box component="img" src="/Images/coffee-cup(3).png" alt="Connor logo" sx={{ width: 38, height: 38 }} />
+              {/* <Box component="img" src="/Images/coffee-cup(3).png" alt="Connor logo" sx={{ width: 38, height: 38 }} /> */}
               <Typography variant="button" sx={{ letterSpacing: 2, fontWeight: 700, color: 'primary.main' }}>
                 CONNOR GRIEVES
               </Typography>
@@ -127,7 +127,7 @@ function App() {
           <Container maxWidth="lg">
             <Box className="hero-content" sx={{ mx: 'auto', maxWidth: 760, px: { xs: 2, md: 0 }, textAlign: { xs: 'left', md: 'center' } }}>
               <Typography variant="overline" sx={{ display: 'block', mb: 3, letterSpacing: 2, color: 'secondary.main' }}>
-                Software Developer
+                Software Developer / Indie Hacker
               </Typography>
               <Typography variant="h1" component="h1" sx={{ mb: 3, lineHeight: 1.02, letterSpacing: '-0.03em' }}>
                 Modern, minimal, and accessible digital experiences that feel effortless.
