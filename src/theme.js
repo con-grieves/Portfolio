@@ -18,6 +18,9 @@ export const getTheme = (mode) =>
         primary: mode === 'dark' ? '#F7F8FF' : '#111827',
         secondary: mode === 'dark' ? '#A0A7BF' : '#6B7280',
       },
+      reciteme: {
+        main: '#e9302d',
+      },
     },
     typography: {
       fontFamily: ['Ubuntu', 'Roboto', 'Arial', 'sans-serif'].join(','),

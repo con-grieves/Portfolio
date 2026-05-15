@@ -11,6 +11,7 @@ import {
   CssBaseline,
   Divider,
   Grid,
+  Link,
   Stack,
   Switch,
   ThemeProvider,
@@ -133,14 +134,14 @@ function App() {
                 Modern, minimal, and accessible digital experiences that feel effortless.
               </Typography>
               <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 600, mx: { xs: 0, md: 'auto' }, mb: 5, lineHeight: 1.8 }}>
-                Based in Newcastle, I build refined user experiences at Recite Me and create thoughtful personal projects using modern JavaScript and clean design systems.
+                I currently enjoy building field-leading Accessibility Tools as a Software Developer at <Link href="https://reciteme.com/" underline="none" target="_blank" rel="noopener noreferrer" sx={{ color: 'reciteme.main' }}>Recite Me</Link> whilst also building Succinct, User-Focussed products and applications in my own time. 
               </Typography>
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent={{ md: 'center' }}>
                 <Button href="#projects" variant="contained" size="large">
-                  View work
+                  View Products
                 </Button>
                 <Button href="#about" variant="outlined" size="large" color="secondary">
-                  Learn more
+                  Connect with me
                 </Button>
               </Stack>
             </Box>
