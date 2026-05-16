@@ -133,7 +133,7 @@ function App() {
               <Typography variant="h1" component="h1" sx={{ mb: 3, lineHeight: 1.02, letterSpacing: '-0.03em' }}>
                 Hi, I'm Connor !<br></br>
                 <Typography variant="h2" component="h2" sx={{ mt: 4, letterSpacing: '-0.02em', color: 'primary.main' }}>
-                  Based in the North-East of England, I write code, build products and take photos. Thanks for stopping by.
+                  Based in the North-East of England, I'm writing code, building products and taking photos. Thanks for stopping by.
                 </Typography>
               </Typography>
               <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 600, mx: { xs: 0, md: 'auto' }, mb: 5, lineHeight: 1.8 }}>
@@ -151,7 +151,7 @@ function App() {
           </Container>
         </Box>
 
-        <Container maxWidth="lg" id="about" className="about-section" sx={{ py: { xs: 8, md: 10 }, px: { xs: 2, md: 0 } }}>
+        {/* <Container maxWidth="lg" id="about" className="about-section" sx={{ py: { xs: 8, md: 10 }, px: { xs: 2, md: 0 } }}>
           <Box sx={{ mx: 'auto', maxWidth: 900 }}>
             <Typography variant="h6" color="secondary.main" sx={{ mb: 4, letterSpacing: 1.2, textTransform: 'uppercase' }}>
               // About
@@ -197,7 +197,7 @@ function App() {
               </Typography>
             </Box>
           </Box>
-        </Container>
+        </Container> */}
 
         <Container maxWidth="lg" id="projects" className="projects-section" sx={{ py: { xs: 8, md: 10 }, px: { xs: 2, md: 0 } }}>
           <Box sx={{ mx: 'auto', maxWidth: 900 }}>
