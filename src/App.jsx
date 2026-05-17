@@ -182,8 +182,8 @@ function App() {
 
           <Container maxWidth="lg" id="projects" className="projects-section" sx={{ py: { xs: 8, md: 10 }, px: { xs: 2, md: 0 } }}>
             <Box sx={{ mx: 'auto', maxWidth: 900 }}>
-              <Typography variant="h6" color="secondary.main" sx={{ mb: 4, letterSpacing: 1.2, textTransform: 'uppercase' }}>
-                // Free tools & games
+              <Typography variant="overline" sx={{ display: 'block', textAlign: 'center', mb: 3, letterSpacing: 2, color: 'secondary.main' }}>
+                Free tools and games
               </Typography>
 
               <Grid container spacing={4} justifyContent="center">
@@ -200,7 +200,6 @@ function App() {
                         borderColor: 'divider',
                         transition: 'transform 0.28s ease, box-shadow 0.28s ease',
                         '&:hover': {
-                          transform: 'translateY(-8px)',
                           boxShadow: '0 32px 80px rgba(0, 0, 0, 0.22)',
                         },
                       }}
@@ -214,7 +213,7 @@ function App() {
                           {project.description}
                         </Typography>
                         <Stack direction="row" spacing={1} flexWrap="wrap">
-                          {project.tags.map((tag) => (
+                          {project.tags?.map((tag) => (
                             <Button
                               key={tag}
                               size="small"
@@ -373,7 +372,7 @@ function App() {
                         animation: attemptedDay ? `${angryShake} 0.6s ease-in-out infinite` : 'none',
                       }}
                     >
-                      😡
+                      😎
                     </Typography>
                   </Box>
                   <Box sx={{ position: 'relative', display: 'inline-flex', alignItems: 'center', ml: 1, mr: 1 }}>

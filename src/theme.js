@@ -8,7 +8,7 @@ export const getTheme = (mode) =>
         main: '#EDEFFF',
       },
       secondary: {
-        main: '#A78BFA',
+        main: '#6be8de',
       },
       background: {
         default: mode === 'dark' ? '#090A11' : '#F8F9FF',
