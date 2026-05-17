@@ -254,7 +254,7 @@ function App() {
       photography: {
         overline: 'Photography',
         title: 'Photography coming soon',
-        description: 'A sleek showcase of shots and visual work is almost ready. Check back soon for the new gallery.',
+        description: 'A showcase of my latest work is almost ready. Check back soon for the new gallery.',
       },
     };
 
@@ -372,7 +372,7 @@ function App() {
                         animation: attemptedDay ? `${angryShake} 0.6s ease-in-out infinite` : 'none',
                       }}
                     >
-                      😎
+                      ☝️
                     </Typography>
                   </Box>
                   <Box sx={{ position: 'relative', display: 'inline-flex', alignItems: 'center', ml: 1, mr: 1 }}>
