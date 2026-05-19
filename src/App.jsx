@@ -1,5 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { keyframes } from '@emotion/react';
+import { useCallback, useMemo, useState } from 'react';
 import {
   AppBar,
   Box,
@@ -14,49 +13,52 @@ import {
   Grid,
   Link,
   Stack,
-  Switch,
   ThemeProvider,
   Typography,
   useMediaQuery,
 } from '@mui/material';
-import { Brightness4, Brightness7 } from '@mui/icons-material';
 import { Code, Css, Html, Javascript, GitHub, Terminal } from '@mui/icons-material';
-import { getTheme } from './theme.js';
+import { getShellStyles, getTheme } from './theme.js';
 import { projects } from './data.js';
+import { Jukebox } from './components/Jukebox.jsx';
+import { ThemeToggle } from './components/ThemeToggle.jsx';
+import { useJukebox } from './hooks/useJukebox.js';
+
+const THEME_STORAGE_KEY = 'portfolio-theme-mode';
+
+function getInitialMode() {
+  try {
+    return localStorage.getItem(THEME_STORAGE_KEY) === 'light' ? 'light' : 'dark';
+  } catch {
+    return 'dark';
+  }
+}
 
 function App() {
-  const [mode] = useState('dark');
+  const [mode, setMode] = useState(getInitialMode);
   const [page, setPage] = useState('home');
-  const [attemptedDay, setAttemptedDay] = useState(false);
-  const resetNudge = useRef(null);
   const theme = useMemo(() => getTheme(mode), [mode]);
+  const shellStyles = useMemo(() => getShellStyles(mode), [mode]);
   const smallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const jukebox = useJukebox();
+
+  const toggleMode = useCallback(() => {
+    setMode((current) => {
+      const next = current === 'dark' ? 'light' : 'dark';
+      try {
+        localStorage.setItem(THEME_STORAGE_KEY, next);
+      } catch {
+        // ignore storage errors
+      }
+      return next;
+    });
+  }, []);
 
   const navItems = [
     { label: 'Home', page: 'home' },
     { label: 'Products', page: 'products' },
     { label: 'Photography', page: 'photography' },
   ];
-
-  const angryShake = keyframes`
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    25% { transform: translate(calc(-50% - 1px), -50%) rotate(-1deg); }
-    50% { transform: translate(calc(-50% + 1px), -50%) rotate(1deg); }
-    75% { transform: translate(calc(-50% - 1px), -50%) rotate(-1deg); }
-    100% { transform: translate(-50%, -50%) rotate(0deg); }
-  `;
-
-  const showNudge = () => {
-    setAttemptedDay(true);
-    window.clearTimeout(resetNudge.current);
-    resetNudge.current = window.setTimeout(() => {
-      setAttemptedDay(false);
-    }, 900);
-  };
-
-  useEffect(() => {
-    return () => window.clearTimeout(resetNudge.current);
-  }, []);
 
   const getTechIcon = (tag) => {
     switch (tag) {
@@ -198,9 +200,12 @@ function App() {
                         borderRadius: 4,
                         border: '1px solid',
                         borderColor: 'divider',
-                        transition: 'transform 0.28s ease, box-shadow 0.28s ease',
+                        transition: 'transform 0.28s ease, box-shadow 0.28s ease, background-color 0.5s ease, border-color 0.5s ease',
                         '&:hover': {
-                          boxShadow: '0 32px 80px rgba(0, 0, 0, 0.22)',
+                          boxShadow: (t) =>
+                            t.palette.mode === 'dark'
+                              ? '0 32px 80px rgba(0, 0, 0, 0.22)'
+                              : '0 28px 64px rgba(15, 24, 43, 0.12)',
                         },
                       }}
                     >
@@ -289,8 +294,9 @@ function App() {
         className="page-shell"
         sx={{
           minHeight: '100vh',
-          background: 'linear-gradient(180deg, #090a11 0%, #11141f 100%)',
+          background: shellStyles.pageBackground,
           color: 'text.primary',
+          transition: shellStyles.transition,
         }}
       >
         <AppBar
@@ -302,26 +308,39 @@ function App() {
             borderBottom: '1px solid',
             borderColor: 'divider',
             backdropFilter: 'blur(16px)',
-            backgroundColor: 'rgba(9, 10, 17, 0.88)',
+            backgroundColor: shellStyles.appBarBackground,
             py: 1.25,
+            transition: shellStyles.transition,
           }}
         >
           <Container
             className="header-container"
             maxWidth="lg"
             disableGutters
-            sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', px: { xs: 2, sm: 3, md: 4 } }}
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              px: { xs: 2, sm: 3, md: 4 },
+            }}
           >
-            <Stack direction="row" alignItems="center" spacing={1.5}>
-              {/* <Box component="img" src="/Images/coffee-cup(3).png" alt="Connor logo" sx={{ width: 38, height: 38 }} /> */}
-              <Typography variant="button" sx={{ letterSpacing: 2, fontWeight: 700, color: 'primary.main' }}>
+            <Stack direction="row" alignItems="center" spacing={1.5} sx={{ flexShrink: 0 }}>
+              <Typography
+                variant="button"
+                sx={{
+                  letterSpacing: 2,
+                  fontWeight: 700,
+                  color: 'primary.main',
+                  transition: 'color 0.5s ease',
+                }}
+              >
                 CONNOR GRIEVES
               </Typography>
             </Stack>
 
-            <Stack direction="row" spacing={2} alignItems="center">
+            <Stack direction="row" spacing={{ xs: 0.5, sm: 1 }} alignItems="center" sx={{ flexShrink: 0 }}>
               {!smallScreen && (
-                <Stack direction="row" spacing={3}>
+                <Stack direction="row" spacing={3} sx={{ mr: { sm: 1, md: 2 } }}>
                   {navItems.map((item) => (
                     <Button
                       key={item.page}
@@ -331,11 +350,11 @@ function App() {
                         color: page === item.page ? 'primary.main' : 'text.secondary',
                         fontWeight: 600,
                         letterSpacing: 0.6,
-                        transition: 'color 180ms ease, backgroundColor 180ms ease',
+                        transition: 'color 0.5s ease, background-color 0.5s ease',
                         bgcolor: 'transparent',
                         '&:hover': {
                           color: 'primary.main',
-                          bgcolor: 'rgba(255,255,255,0.06)',
+                          bgcolor: 'action.hover',
                         },
                       }}
                     >
@@ -345,52 +364,19 @@ function App() {
                 </Stack>
               )}
 
-                <Box sx={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-                  <Box sx={{ position: 'relative', width: 28, height: 28, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <Brightness7
-                      sx={{
-                        color: '#F4D775',
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
-                        opacity: attemptedDay ? 0 : 1,
-                        transition: 'opacity 200ms ease',
-                      }}
-                    />
-                    <Typography
-                      component="span"
-                      sx={{
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
-                        opacity: attemptedDay ? 1 : 0,
-                        transition: 'opacity 200ms ease',
-                        fontSize: 22,
-                        lineHeight: 1,
-                        animation: attemptedDay ? `${angryShake} 0.6s ease-in-out infinite` : 'none',
-                      }}
-                    >
-                      ☝️
-                    </Typography>
-                  </Box>
-                  <Box sx={{ position: 'relative', display: 'inline-flex', alignItems: 'center', ml: 1, mr: 1 }}>
-                    <Switch
-                      checked={!attemptedDay}
-                      onChange={showNudge}
-                      color="secondary"
-                    />
-                  </Box>
-                  <Brightness4 sx={{ color: '#B794F6' }} />
-                </Box>
+              <ThemeToggle mode={mode} onToggle={toggleMode} />
+              <Jukebox {...jukebox} />
             </Stack>
           </Container>
         </AppBar>
 
         {renderPageContent()}
 
-        <Box component="footer" className="footer-section" sx={{ py: 6, textAlign: 'center', bgcolor: 'background.paper' }}>
+        <Box
+          component="footer"
+          className="footer-section"
+          sx={{ py: 6, textAlign: 'center', bgcolor: 'background.paper', transition: 'background-color 0.5s ease' }}
+        >
           <Container className="footer-container" maxWidth="lg">
             <Divider sx={{ borderColor: 'divider', mb: 3 }} />
             <Typography variant="body2" color="text.secondary" sx={{ fontWeight: 1000 }}>
