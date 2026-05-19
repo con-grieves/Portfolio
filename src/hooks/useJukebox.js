@@ -18,6 +18,13 @@ function getInitialVolume() {
   return 0.7;
 }
 
+function isMobileDevice() {
+  return (
+    /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+    (navigator.maxTouchPoints > 0 && window.matchMedia('(max-width: 768px)').matches)
+  );
+}
+
 export function useJukebox() {
   const audioRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -136,6 +143,29 @@ export function useJukebox() {
       audio.removeEventListener('pause', onPause);
     };
   }, [goToIndex]);
+
+  useEffect(() => {
+    if (!isMobileDevice()) return;
+
+    const stopOnBackground = () => {
+      const audio = audioRef.current;
+      if (audio && !audio.paused) {
+        pause();
+      }
+    };
+
+    const onVisibilityChange = () => {
+      if (document.hidden) stopOnBackground();
+    };
+
+    document.addEventListener('visibilitychange', onVisibilityChange);
+    window.addEventListener('pagehide', stopOnBackground);
+
+    return () => {
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+      window.removeEventListener('pagehide', stopOnBackground);
+    };
+  }, [pause]);
 
   return {
     audioRef,
