@@ -5,7 +5,6 @@ import {
   Button,
   Container,
   CssBaseline,
-  Divider,
   Grid,
   Link,
   Stack,
@@ -64,16 +63,16 @@ function App() {
             <Container maxWidth="lg">
               <Box className="hero-content" sx={{ mx: 'auto', maxWidth: 760, px: { xs: 2, md: 0 }, textAlign: { xs: 'left', md: 'center' } }}>
                 <Typography variant="overline" sx={{ display: 'block', mb: 3, letterSpacing: 2, color: 'secondary.main' }}>
-                  Software Developer / Indie Hacker
+                  Software Engineer / Indie Hacker
                 </Typography>
                 <Typography variant="h1" component="h1" sx={{ mb: 3, lineHeight: 1.02, letterSpacing: '-0.03em' }}>
-                  Hi, I'm Connor!
+                  Hi, I'm Connor !
                 </Typography>
                 <Typography variant="h2" component="h2" sx={{ mb: 3, letterSpacing: '-0.02em', color: 'primary.main' }}>
-                  Based in the North-East of England, I'm writing code, building products and taking photos.
+                  I write code and take photos.
                 </Typography>
-                <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 600, mx: { xs: 0, md: 'auto' }, mb: 5, lineHeight: 1.8 }}>
-                  I'm currently building field-leading Accessibility Tools as a Software Developer at{' '}
+                <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 600, mx: { xs: 0, md: 'auto' }, mb: 4, lineHeight: 1.8 }}>
+                  I'm currently developing field-leading Accessibility Tools as a Software Engineer at{' '}
                   <Link
                     href="https://reciteme.com/"
                     underline="none"
@@ -88,7 +87,7 @@ function App() {
                   >
                     Recite Me
                   </Link>
-                  , whilst also creating succinct, user-focused products and applications in my own time.
+                   {' '}and building cool stuff in my own time.
                 </Typography>
                 <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent={{ md: 'center' }}>
                   <Button
@@ -222,6 +221,8 @@ function App() {
         className="page-shell"
         sx={{
           minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
           background: shellStyles.pageBackground,
           color: 'text.primary',
           transition: shellStyles.transition,
@@ -303,12 +304,18 @@ function App() {
         <Box
           component="footer"
           className="footer-section"
-          sx={{ py: 6, textAlign: 'center', bgcolor: 'background.paper', transition: 'background-color 0.5s ease' }}
+          sx={{
+            py: 6,
+            textAlign: 'center',
+            bgcolor: 'background.paper',
+            borderTop: '1px solid',
+            borderColor: 'divider',
+            transition: 'background-color 0.5s ease, border-color 0.5s ease',
+          }}
         >
-          <Container className="footer-container" maxWidth="lg">
-            <Divider sx={{ borderColor: 'divider', mb: 3 }} />
-            <Typography variant="body2" color="text.secondary" sx={{ fontWeight: 1000 }}>
-              © 2026 Connor Grieves
+          <Container maxWidth="lg">
+            <Typography variant="caption" color="text.secondary">
+              © 2026 Connor Grieves. All rights reserved.
             </Typography>
           </Container>
         </Box>

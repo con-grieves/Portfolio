@@ -6,7 +6,7 @@ const ICONS = {
   dice: CasinoOutlined,
 };
 
-export function ToolCard({ title, description, badge, footerStat, icon, live, code }) {
+export function ToolCard({ title, description, footerStat, icon, live, code }) {
   const Icon = ICONS[icon] ?? CalculateOutlined;
 
   return (
@@ -36,36 +36,20 @@ export function ToolCard({ title, description, badge, footerStat, icon, live, co
         },
       }}
     >
-      <Box sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', mb: 2.5 }}>
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: 44,
-            height: 44,
-            borderRadius: 2,
-            bgcolor: (t) =>
-              t.palette.mode === 'dark' ? 'rgba(107, 232, 222, 0.12)' : 'rgba(13, 143, 134, 0.1)',
-          }}
-        >
-          <Icon sx={{ fontSize: 24, color: 'secondary.main' }} />
-        </Box>
-        {badge && (
-          <Box
-            sx={{
-              px: 1.25,
-              py: 0.5,
-              borderRadius: 999,
-              bgcolor: (t) =>
-                t.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.06)' : 'rgba(15, 24, 43, 0.06)',
-            }}
-          >
-            <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 600, letterSpacing: 0.2 }}>
-              {badge}
-            </Typography>
-          </Box>
-        )}
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: 44,
+          height: 44,
+          borderRadius: 2,
+          mb: 2.5,
+          bgcolor: (t) =>
+            t.palette.mode === 'dark' ? 'rgba(107, 232, 222, 0.12)' : 'rgba(13, 143, 134, 0.1)',
+        }}
+      >
+        <Icon sx={{ fontSize: 24, color: 'secondary.main' }} />
       </Box>
 
       <Typography
