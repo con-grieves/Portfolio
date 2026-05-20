@@ -3,10 +3,6 @@ import {
   AppBar,
   Box,
   Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
   Container,
   CssBaseline,
   Divider,
@@ -17,11 +13,11 @@ import {
   Typography,
   useMediaQuery,
 } from '@mui/material';
-import { Code, Css, Html, Javascript, GitHub, Terminal } from '@mui/icons-material';
 import { getShellStyles, getTheme } from './theme.js';
 import { projects } from './data.js';
 import { Jukebox } from './components/Jukebox.jsx';
 import { ThemeToggle } from './components/ThemeToggle.jsx';
+import { ToolCard } from './components/ToolCard.jsx';
 import { useJukebox } from './hooks/useJukebox.js';
 
 const THEME_STORAGE_KEY = 'portfolio-theme-mode';
@@ -59,25 +55,6 @@ function App() {
     { label: 'Products', page: 'products' },
     { label: 'Photography', page: 'photography' },
   ];
-
-  const getTechIcon = (tag) => {
-    switch (tag) {
-      case 'React.js':
-        return <Code sx={{ fontSize: 28, color: '#61DAFB' }} />;
-      case 'CSS':
-        return <Css sx={{ fontSize: 28, color: '#1572B6' }} />;
-      case 'HTML':
-        return <Html sx={{ fontSize: 28, color: '#E34F26' }} />;
-      case 'JavaScript':
-        return <Javascript sx={{ fontSize: 28, color: '#F7DF1E' }} />;
-      case 'Git':
-        return <GitHub sx={{ fontSize: 28, color: '#181717' }} />;
-      case 'npm':
-        return <Terminal sx={{ fontSize: 28, color: '#CB3837' }} />;
-      default:
-        return <Code sx={{ fontSize: 28, color: '#61DAFB' }} />;
-    }
-  };
 
   const renderPageContent = () => {
     if (page === 'home') {
@@ -188,59 +165,10 @@ function App() {
                 Free tools and games
               </Typography>
 
-              <Grid container spacing={4} justifyContent="center">
+              <Grid container spacing={3} justifyContent="center">
                 {projects.map((project) => (
-                  <Grid key={project.title} item xs={12} sm={6} md={4}>
-                    <Card
-                      className="project-card"
-                      sx={{
-                        mx: 'auto',
-                        maxWidth: 380,
-                        width: '100%',
-                        borderRadius: 4,
-                        border: '1px solid',
-                        borderColor: 'divider',
-                        transition: 'transform 0.28s ease, box-shadow 0.28s ease, background-color 0.5s ease, border-color 0.5s ease',
-                        '&:hover': {
-                          boxShadow: (t) =>
-                            t.palette.mode === 'dark'
-                              ? '0 32px 80px rgba(0, 0, 0, 0.22)'
-                              : '0 28px 64px rgba(15, 24, 43, 0.12)',
-                        },
-                      }}
-                    >
-                      <CardMedia component="img" height="240" image={project.image} alt={project.title} />
-                      <CardContent>
-                        <Typography variant="h2" sx={{ fontSize: 22, mb: 1 }}>
-                          {project.title}
-                        </Typography>
-                        <Typography variant="body1" color="text.secondary" paragraph>
-                          {project.description}
-                        </Typography>
-                        <Stack direction="row" spacing={1} flexWrap="wrap">
-                          {project.tags?.map((tag) => (
-                            <Button
-                              key={tag}
-                              size="small"
-                              variant="outlined"
-                              color="secondary"
-                              sx={{ textTransform: 'none', mb: 1, minWidth: 'auto', px: 1.25, borderRadius: '16px' }}
-                            >
-                              {getTechIcon(tag)}
-                            </Button>
-                          ))}
-                        </Stack>
-                      </CardContent>
-                      <Divider />
-                      <CardActions sx={{ px: 3, py: 2, justifyContent: 'space-between' }}>
-                        <Button href={project.live} target="_blank" rel="noreferrer" size="small">
-                          Live
-                        </Button>
-                        <Button href={project.code} target="_blank" rel="noreferrer" size="small">
-                          Code
-                        </Button>
-                      </CardActions>
-                    </Card>
+                  <Grid key={project.title} item xs={12} sm={6} md={6} lg={5}>
+                    <ToolCard {...project} />
                   </Grid>
                 ))}
               </Grid>
