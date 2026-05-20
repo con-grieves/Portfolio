@@ -3,13 +3,8 @@ import {
   AppBar,
   Box,
   Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
   Container,
   CssBaseline,
-  Divider,
   Grid,
   Link,
   Stack,
@@ -17,11 +12,11 @@ import {
   Typography,
   useMediaQuery,
 } from '@mui/material';
-import { Code, Css, Html, Javascript, GitHub, Terminal } from '@mui/icons-material';
 import { getShellStyles, getTheme } from './theme.js';
 import { projects } from './data.js';
 import { Jukebox } from './components/Jukebox.jsx';
 import { ThemeToggle } from './components/ThemeToggle.jsx';
+import { ToolCard } from './components/ToolCard.jsx';
 import { useJukebox } from './hooks/useJukebox.js';
 
 const THEME_STORAGE_KEY = 'portfolio-theme-mode';
@@ -60,25 +55,6 @@ function App() {
     { label: 'Photography', page: 'photography' },
   ];
 
-  const getTechIcon = (tag) => {
-    switch (tag) {
-      case 'React.js':
-        return <Code sx={{ fontSize: 28, color: '#61DAFB' }} />;
-      case 'CSS':
-        return <Css sx={{ fontSize: 28, color: '#1572B6' }} />;
-      case 'HTML':
-        return <Html sx={{ fontSize: 28, color: '#E34F26' }} />;
-      case 'JavaScript':
-        return <Javascript sx={{ fontSize: 28, color: '#F7DF1E' }} />;
-      case 'Git':
-        return <GitHub sx={{ fontSize: 28, color: '#181717' }} />;
-      case 'npm':
-        return <Terminal sx={{ fontSize: 28, color: '#CB3837' }} />;
-      default:
-        return <Code sx={{ fontSize: 28, color: '#61DAFB' }} />;
-    }
-  };
-
   const renderPageContent = () => {
     if (page === 'home') {
       return (
@@ -87,16 +63,16 @@ function App() {
             <Container maxWidth="lg">
               <Box className="hero-content" sx={{ mx: 'auto', maxWidth: 760, px: { xs: 2, md: 0 }, textAlign: { xs: 'left', md: 'center' } }}>
                 <Typography variant="overline" sx={{ display: 'block', mb: 3, letterSpacing: 2, color: 'secondary.main' }}>
-                  Software Developer / Indie Hacker
+                  Software Engineer / Indie Hacker
                 </Typography>
                 <Typography variant="h1" component="h1" sx={{ mb: 3, lineHeight: 1.02, letterSpacing: '-0.03em' }}>
-                  Hi, I'm Connor!
+                  Hi, I'm Connor !
                 </Typography>
                 <Typography variant="h2" component="h2" sx={{ mb: 3, letterSpacing: '-0.02em', color: 'primary.main' }}>
-                  Based in the North-East of England, I'm writing code, building products and taking photos.
+                  I write code and take photos.
                 </Typography>
-                <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 600, mx: { xs: 0, md: 'auto' }, mb: 5, lineHeight: 1.8 }}>
-                  I'm currently building field-leading Accessibility Tools as a Software Developer at{' '}
+                <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 600, mx: { xs: 0, md: 'auto' }, mb: 4, lineHeight: 1.8 }}>
+                  I'm currently developing field-leading Accessibility Tools as a Software Engineer at{' '}
                   <Link
                     href="https://reciteme.com/"
                     underline="none"
@@ -111,7 +87,7 @@ function App() {
                   >
                     Recite Me
                   </Link>
-                  , whilst also creating succinct, user-focused products and applications in my own time.
+                   {' '}and building cool stuff in my own time.
                 </Typography>
                 <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent={{ md: 'center' }}>
                   <Button
@@ -188,59 +164,10 @@ function App() {
                 Free tools and games
               </Typography>
 
-              <Grid container spacing={4} justifyContent="center">
+              <Grid container spacing={3} justifyContent="center">
                 {projects.map((project) => (
-                  <Grid key={project.title} item xs={12} sm={6} md={4}>
-                    <Card
-                      className="project-card"
-                      sx={{
-                        mx: 'auto',
-                        maxWidth: 380,
-                        width: '100%',
-                        borderRadius: 4,
-                        border: '1px solid',
-                        borderColor: 'divider',
-                        transition: 'transform 0.28s ease, box-shadow 0.28s ease, background-color 0.5s ease, border-color 0.5s ease',
-                        '&:hover': {
-                          boxShadow: (t) =>
-                            t.palette.mode === 'dark'
-                              ? '0 32px 80px rgba(0, 0, 0, 0.22)'
-                              : '0 28px 64px rgba(15, 24, 43, 0.12)',
-                        },
-                      }}
-                    >
-                      <CardMedia component="img" height="240" image={project.image} alt={project.title} />
-                      <CardContent>
-                        <Typography variant="h2" sx={{ fontSize: 22, mb: 1 }}>
-                          {project.title}
-                        </Typography>
-                        <Typography variant="body1" color="text.secondary" paragraph>
-                          {project.description}
-                        </Typography>
-                        <Stack direction="row" spacing={1} flexWrap="wrap">
-                          {project.tags?.map((tag) => (
-                            <Button
-                              key={tag}
-                              size="small"
-                              variant="outlined"
-                              color="secondary"
-                              sx={{ textTransform: 'none', mb: 1, minWidth: 'auto', px: 1.25, borderRadius: '16px' }}
-                            >
-                              {getTechIcon(tag)}
-                            </Button>
-                          ))}
-                        </Stack>
-                      </CardContent>
-                      <Divider />
-                      <CardActions sx={{ px: 3, py: 2, justifyContent: 'space-between' }}>
-                        <Button href={project.live} target="_blank" rel="noreferrer" size="small">
-                          Live
-                        </Button>
-                        <Button href={project.code} target="_blank" rel="noreferrer" size="small">
-                          Code
-                        </Button>
-                      </CardActions>
-                    </Card>
+                  <Grid key={project.title} item xs={12} sm={6} md={6} lg={5}>
+                    <ToolCard {...project} />
                   </Grid>
                 ))}
               </Grid>
@@ -294,6 +221,8 @@ function App() {
         className="page-shell"
         sx={{
           minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
           background: shellStyles.pageBackground,
           color: 'text.primary',
           transition: shellStyles.transition,
@@ -375,12 +304,18 @@ function App() {
         <Box
           component="footer"
           className="footer-section"
-          sx={{ py: 6, textAlign: 'center', bgcolor: 'background.paper', transition: 'background-color 0.5s ease' }}
+          sx={{
+            py: 6,
+            textAlign: 'center',
+            bgcolor: 'background.paper',
+            borderTop: '1px solid',
+            borderColor: 'divider',
+            transition: 'background-color 0.5s ease, border-color 0.5s ease',
+          }}
         >
-          <Container className="footer-container" maxWidth="lg">
-            <Divider sx={{ borderColor: 'divider', mb: 3 }} />
-            <Typography variant="body2" color="text.secondary" sx={{ fontWeight: 1000 }}>
-              © 2026 Connor Grieves
+          <Container maxWidth="lg">
+            <Typography variant="caption" color="text.secondary">
+              © 2026 Connor Grieves. All rights reserved.
             </Typography>
           </Container>
         </Box>
