@@ -69,10 +69,10 @@ function App() {
                   Hi, I'm Connor !
                 </Typography>
                 <Typography variant="h2" component="h2" sx={{ mb: 3, letterSpacing: '-0.02em', color: 'primary.main' }}>
-                  I write code and take photos.
+                  I write code, with varying levels of success.
                 </Typography>
                 <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 600, mx: { xs: 0, md: 'auto' }, mb: 4, lineHeight: 1.8 }}>
-                  I'm currently developing field-leading Accessibility Tools as a Software Engineer at{' '}
+                  Software Engineer currently working at{' '}
                   <Link
                     href="https://reciteme.com/"
                     underline="none"
@@ -87,19 +87,19 @@ function App() {
                   >
                     Recite Me
                   </Link>
-                   {' '}and building cool stuff in my own time.
+                   {' '}. I also build cool stuff in my own time.
                 </Typography>
                 <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent={{ md: 'center' }}>
                   <Button
                     onClick={() => setPage('products')}
-                    variant="outlined"
+                    variant="text"
                     size="large"
                   >
                     View Products
                   </Button>
                   <Button
                     onClick={() => setPage('photography')}
-                    variant="outlined"
+                    variant="text"
                     size="large"
                     color="secondary"
                   >
@@ -205,7 +205,7 @@ function App() {
             <Typography variant="body1" color="text.secondary" sx={{ mb: 5, lineHeight: 1.8 }}>
               {currentPage.description}
             </Typography>
-            <Button variant="outlined" size="large" color="secondary" onClick={() => setPage('home')}>
+            <Button variant="text" size="large" color="secondary" onClick={() => setPage('home')}>
               Back to Home
             </Button>
           </Box>
