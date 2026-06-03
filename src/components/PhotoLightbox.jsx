@@ -1,15 +1,13 @@
 import { useEffect } from 'react';
+import { Box, Dialog, IconButton, useMediaQuery, useTheme } from '@mui/material';
+import { ChevronLeft, ChevronRight, Close } from '@mui/icons-material';
+import { PhotoExifOverlay } from './PhotoExifOverlay.jsx';
 import {
-  Box,
-  Button,
-  Dialog,
-  IconButton,
-  Stack,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from '@mui/material';
-import { ChevronLeft, ChevronRight, Close, Download } from '@mui/icons-material';
+  blockImageContextMenu,
+  blockImageDrag,
+  protectedImageSx,
+  protectedImageWrapperSx,
+} from '../utils/imageProtection.js';
 
 export function PhotoLightbox({ open, photo, photos, onClose, onPrev, onNext }) {
   const theme = useTheme();
@@ -41,19 +39,19 @@ export function PhotoLightbox({ open, photo, photos, onClose, onPrev, onNext }) 
       open={open}
       onClose={onClose}
       fullScreen={fullScreen}
-      maxWidth="lg"
-      fullWidth
+      maxWidth={false}
       PaperProps={{
         sx: {
-          bgcolor: (t) =>
-            t.palette.mode === 'dark' ? 'rgba(9, 10, 17, 0.96)' : 'rgba(246, 248, 255, 0.98)',
-          backdropFilter: 'blur(16px)',
+          bgcolor: 'transparent',
           backgroundImage: 'none',
           boxShadow: 'none',
-          m: fullScreen ? 0 : 2,
-          borderRadius: fullScreen ? 0 : 3,
-          border: fullScreen ? 'none' : '1px solid',
-          borderColor: 'divider',
+          overflow: 'hidden',
+          m: 0,
+          maxWidth: '100vw',
+          maxHeight: '100vh',
+          width: '100vw',
+          height: fullScreen ? '100dvh' : 'auto',
+          borderRadius: 0,
         },
       }}
       BackdropProps={{
@@ -67,14 +65,15 @@ export function PhotoLightbox({ open, photo, photos, onClose, onPrev, onNext }) 
         onClick={onClose}
         aria-label="Close"
         sx={{
-          position: 'absolute',
+          position: 'fixed',
           top: 12,
           right: 12,
-          zIndex: 2,
-          color: 'text.primary',
-          bgcolor: 'action.hover',
+          zIndex: 3,
+          color: 'rgba(255, 255, 255, 0.95)',
+          bgcolor: 'rgba(0, 0, 0, 0.45)',
+          backdropFilter: 'blur(4px)',
           transition: 'background-color 0.5s ease',
-          '&:hover': { bgcolor: 'action.selected' },
+          '&:hover': { bgcolor: 'rgba(0, 0, 0, 0.65)' },
         }}
       >
         <Close />
@@ -85,15 +84,16 @@ export function PhotoLightbox({ open, photo, photos, onClose, onPrev, onNext }) 
           onClick={onPrev}
           aria-label="Previous photo"
           sx={{
-            position: 'absolute',
+            position: 'fixed',
             left: { xs: 8, sm: 16 },
             top: '50%',
             transform: 'translateY(-50%)',
-            zIndex: 2,
-            color: 'text.primary',
-            bgcolor: 'action.hover',
+            zIndex: 3,
+            color: 'rgba(255, 255, 255, 0.95)',
+            bgcolor: 'rgba(0, 0, 0, 0.45)',
+            backdropFilter: 'blur(4px)',
             transition: 'background-color 0.5s ease',
-            '&:hover': { bgcolor: 'action.selected' },
+            '&:hover': { bgcolor: 'rgba(0, 0, 0, 0.65)' },
           }}
         >
           <ChevronLeft />
@@ -105,15 +105,16 @@ export function PhotoLightbox({ open, photo, photos, onClose, onPrev, onNext }) 
           onClick={onNext}
           aria-label="Next photo"
           sx={{
-            position: 'absolute',
+            position: 'fixed',
             right: { xs: 8, sm: 16 },
             top: '50%',
             transform: 'translateY(-50%)',
-            zIndex: 2,
-            color: 'text.primary',
-            bgcolor: 'action.hover',
+            zIndex: 3,
+            color: 'rgba(255, 255, 255, 0.95)',
+            bgcolor: 'rgba(0, 0, 0, 0.45)',
+            backdropFilter: 'blur(4px)',
             transition: 'background-color 0.5s ease',
-            '&:hover': { bgcolor: 'action.selected' },
+            '&:hover': { bgcolor: 'rgba(0, 0, 0, 0.65)' },
           }}
         >
           <ChevronRight />
@@ -123,58 +124,59 @@ export function PhotoLightbox({ open, photo, photos, onClose, onPrev, onNext }) 
       <Box
         sx={{
           display: 'flex',
-          flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          minHeight: fullScreen ? '100vh' : 'auto',
+          width: '100vw',
+          height: fullScreen ? '100dvh' : '100vh',
           p: { xs: 2, sm: 4 },
-          pt: { xs: 7, sm: 5 },
+          boxSizing: 'border-box',
         }}
       >
         <Box
-          component="img"
-          src={photo.src}
-          alt={photo.alt || photo.title || ''}
+          onContextMenu={blockImageContextMenu}
           sx={{
+            position: 'relative',
             maxWidth: '100%',
-            maxHeight: { xs: '60vh', sm: '75vh', md: '85vh' },
-            objectFit: 'contain',
-            borderRadius: 1,
-          }}
-        />
-
-        <Stack
-          spacing={1}
-          sx={{
-            mt: 3,
-            width: '100%',
-            maxWidth: 640,
-            alignItems: { xs: 'center', sm: 'flex-start' },
-            textAlign: { xs: 'center', sm: 'left' },
+            maxHeight: '100%',
+            ...protectedImageWrapperSx,
           }}
         >
-          {photo.title && (
-            <Typography variant="h6" sx={{ fontWeight: 700, color: 'primary.main' }}>
-              {photo.title}
-            </Typography>
-          )}
-
-          <Typography variant="body2" color="text.secondary">
-            {[photo.location, photo.date, photo.camera].filter(Boolean).join(' · ')}
-          </Typography>
-
-          <Button
-            component="a"
-            href={photo.src}
-            download={downloadFilename}
-            variant="outlined"
-            color="secondary"
-            startIcon={<Download />}
-            sx={{ mt: 1, transition: 'border-color 0.5s ease, background-color 0.5s ease' }}
-          >
-            Download
-          </Button>
-        </Stack>
+          <Box
+            component="img"
+            src={photo.src}
+            alt={photo.alt || photo.title || ''}
+            draggable={false}
+            onContextMenu={blockImageContextMenu}
+            onDragStart={blockImageDrag}
+            sx={{
+              display: 'block',
+              maxWidth: { xs: 'calc(100vw - 32px)', sm: 'calc(100vw - 128px)' },
+              maxHeight: { xs: 'calc(100dvh - 32px)', sm: 'calc(100vh - 64px)' },
+              width: 'auto',
+              height: 'auto',
+              objectFit: 'contain',
+              borderRadius: 1,
+              ...protectedImageSx,
+            }}
+          />
+          <Box
+            aria-hidden
+            onContextMenu={blockImageContextMenu}
+            onDragStart={blockImageDrag}
+            sx={{
+              position: 'absolute',
+              inset: 0,
+            }}
+          />
+          <PhotoExifOverlay
+            camera={photo.camera}
+            lens={photo.lens}
+            focalLength={photo.focalLength}
+            downloadable={photo.downloadable}
+            downloadHref={photo.src}
+            downloadFilename={downloadFilename}
+          />
+        </Box>
       </Box>
     </Dialog>
   );

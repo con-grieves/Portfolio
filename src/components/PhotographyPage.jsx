@@ -43,10 +43,10 @@ export function PhotographyPage({ onBack }) {
             component="h1"
             sx={{ mb: 2, lineHeight: 1.05, letterSpacing: '-0.03em' }}
           >
-            My Work
+            Gallery
           </Typography>
           <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 520, mx: 'auto', lineHeight: 1.8 }}>
-            A selection of photographs from recent trips and everyday moments.
+
           </Typography>
         </Box>
 

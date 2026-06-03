@@ -89,13 +89,14 @@ function App() {
                   >
                     Recite Me
                   </Link>
-                   {' '} making industry leading accessibilty tools. I also build cool stuff in my own time.
+                   {' '} making industry leading accessibilty tools. I also build cool stuff and take photos.
                 </Typography>
                 <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent={{ md: 'center' }}>
                   <Button
                     onClick={() => setPage('products')}
                     variant="text"
                     size="large"
+                    color="secondary"
                   >
                     View Products
                   </Button>
@@ -103,7 +104,6 @@ function App() {
                     onClick={() => setPage('photography')}
                     variant="text"
                     size="large"
-                    color="secondary"
                   >
                     My Photography
                   </Button>

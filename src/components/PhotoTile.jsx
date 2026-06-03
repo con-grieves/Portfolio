@@ -1,4 +1,10 @@
 import { Box, Typography } from '@mui/material';
+import {
+  blockImageContextMenu,
+  blockImageDrag,
+  protectedImageSx,
+  protectedImageWrapperSx,
+} from '../utils/imageProtection.js';
 
 export function PhotoTile({ photo, onClick }) {
   const metaParts = [photo.location, photo.date].filter(Boolean);
@@ -9,6 +15,7 @@ export function PhotoTile({ photo, onClick }) {
       component="button"
       type="button"
       onClick={onClick}
+      onContextMenu={blockImageContextMenu}
       aria-label={ariaLabel || photo.alt}
       sx={{
         position: 'relative',
@@ -22,6 +29,7 @@ export function PhotoTile({ photo, onClick }) {
         bgcolor: 'background.paper',
         textAlign: 'left',
         transition: 'transform 0.4s ease',
+        ...protectedImageWrapperSx,
         '&:hover': {
           transform: 'scale(1.02)',
           '& .photo-tile-meta': {
@@ -35,10 +43,24 @@ export function PhotoTile({ photo, onClick }) {
         src={photo.src}
         alt={photo.alt || photo.title || ''}
         loading="lazy"
+        draggable={false}
+        onContextMenu={blockImageContextMenu}
+        onDragStart={blockImageDrag}
         sx={{
           display: 'block',
           width: '100%',
           height: 'auto',
+          ...protectedImageSx,
+        }}
+      />
+
+      <Box
+        aria-hidden
+        onContextMenu={blockImageContextMenu}
+        onDragStart={blockImageDrag}
+        sx={{
+          position: 'absolute',
+          inset: 0,
         }}
       />
 
