@@ -1,3 +1,14 @@
+export const featuredProduct = {
+  overline: 'Featured product',
+  title: 'Product Name',
+  tagline: 'One-line value proposition.',
+  description:
+    'A short description of what this product does and who it is for. Swap this placeholder copy when your paid product is ready to launch.',
+  ctaLabel: 'Learn more',
+  ctaUrl: '#',
+  image: null,
+};
+
 export const projects = [
   {
     title: 'Calc.io',

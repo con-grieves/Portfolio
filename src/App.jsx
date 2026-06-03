@@ -13,7 +13,8 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import { getShellStyles, getTheme } from './theme.js';
-import { projects } from './data.js';
+import { featuredProduct, projects } from './data.js';
+import { FeaturedProduct } from './components/FeaturedProduct.jsx';
 import { Jukebox } from './components/Jukebox.jsx';
 import { ThemeToggle } from './components/ThemeToggle.jsx';
 import { ToolCard } from './components/ToolCard.jsx';
@@ -66,10 +67,10 @@ function App() {
                   Software Engineer / Indie Hacker
                 </Typography>
                 <Typography variant="h1" component="h1" sx={{ mb: 3, lineHeight: 1.02, letterSpacing: '-0.03em' }}>
-                  Hi, I'm Connor !
+                  Hi, I'm Connor 👋
                 </Typography>
                 <Typography variant="h2" component="h2" sx={{ mb: 3, letterSpacing: '-0.02em', color: 'primary.main' }}>
-                  I write code, with varying levels of success.
+                  I write code and take photos.
                 </Typography>
                 <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 600, mx: { xs: 0, md: 'auto' }, mb: 4, lineHeight: 1.8 }}>
                   Software Engineer currently working at{' '}
@@ -87,7 +88,7 @@ function App() {
                   >
                     Recite Me
                   </Link>
-                   {' '}. I also build cool stuff in my own time.
+                   {' '} making industry leading accessibilty tools. I also build cool stuff in my own time.
                 </Typography>
                 <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent={{ md: 'center' }}>
                   <Button
@@ -110,53 +111,16 @@ function App() {
             </Container>
           </Box>
 
-          {/* <Container maxWidth="lg" id="about" className="about-section" sx={{ py: { xs: 8, md: 10 }, px: { xs: 2, md: 0 } }}>
-            <Box sx={{ mx: 'auto', maxWidth: 900 }}>
-              <Typography variant="h6" color="secondary.main" sx={{ mb: 4, letterSpacing: 1.2, textTransform: 'uppercase' }}>
-                // About
-              </Typography>
-
-              <Grid container spacing={4} justifyContent="center">
-                <Grid item xs={12} md={8}>
-                  <Card
-                    className="code-snippet-card"
-                    sx={{
-                      borderRadius: 4,
-                      border: '1px solid',
-                      borderColor: 'divider',
-                      overflow: 'hidden',
-                      bgcolor: 'background.paper',
-                    }}
-                  >
-                    <Box sx={{ bgcolor: '#0f1320', p: { xs: 3, md: 4 } }}>
-                      <Box sx={{ display: 'flex', gap: 1.5, mb: 3 }}>
-                        <Box sx={{ width: 12, height: 12, borderRadius: '50%', bgcolor: '#EC6A5F' }} />
-                        <Box sx={{ width: 12, height: 12, borderRadius: '50%', bgcolor: '#F5BF4F' }} />
-                        <Box sx={{ width: 12, height: 12, borderRadius: '50%', bgcolor: '#296018' }} />
-                      </Box>
-                      <Box component="pre" sx={{ fontFamily: 'source-code-pro, monospace', color: 'text.primary', whiteSpace: 'pre-wrap', fontSize: 16, m: 0, lineHeight: 1.8 }}>
-                        <Box component="span" sx={{ color: '#6284b8' }}>const</Box> me = <Box component="span" sx={{ color: '#F9E16C' }}>{'{'}</Box>
-                        {'\n'}    <Box component="span" sx={{ color: '#a56745' }}>name</Box>: <Box component="span" sx={{ color: '#89cd89' }}>'Connor Grieves'</Box>,
-                        {'\n'}    <Box component="span" sx={{ color: '#a56745' }}>age</Box>: <Box component="span" sx={{ color: '#89cd89' }}>30</Box>,
-                        {'\n'}    <Box component="span" sx={{ color: '#a56745' }}>location</Box>: <Box component="span" sx={{ color: '#89cd89' }}>'United Kingdom'</Box>,
-                        {'\n'}    <Box component="span" sx={{ color: '#a56745' }}>favoriteDrink</Box>: <Box component="span" sx={{ color: '#89cd89' }}>'Flat White'</Box>
-                        {'\n'}<Box component="span" sx={{ color: '#F9E16C' }}>{'}'}</Box>;
-                      </Box>
-                    </Box>
-                  </Card>
-                </Grid>
-              </Grid>
-
-              <Box className="bio-copy" sx={{ mt: 5, maxWidth: 700, mx: 'auto', display: 'grid', gap: 3 }}>
-                <Typography variant="body1">
-                  I specialise in modern JavaScript experiences with a focus on accessibility, usability, and subtle motion. My work blends clean UI patterns with practical functionality.
-                </Typography>
-                <Typography variant="body1">
-                  I've been part of agile teams and fast-moving startups, delivering polished front-end products that feel premium without being overdesigned.
-                </Typography>
-              </Box>
+          <Container
+            maxWidth="lg"
+            id="featured"
+            className="featured-section"
+            sx={{ py: { xs: 6, md: 8 }, px: { xs: 2, md: 0 } }}
+          >
+            <Box sx={{ mx: 'auto', maxWidth: 960 }}>
+              <FeaturedProduct {...featuredProduct} />
             </Box>
-          </Container> */}
+          </Container>
 
           <Container maxWidth="lg" id="projects" className="projects-section" sx={{ py: { xs: 8, md: 10 }, px: { xs: 2, md: 0 } }}>
             <Box sx={{ mx: 'auto', maxWidth: 900 }}>
