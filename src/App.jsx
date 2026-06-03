@@ -17,6 +17,7 @@ import { featuredProduct, projects } from './data.js';
 import { FeaturedProduct } from './components/FeaturedProduct.jsx';
 import { Jukebox } from './components/Jukebox.jsx';
 import { ThemeToggle } from './components/ThemeToggle.jsx';
+import { PhotographyPage } from './components/PhotographyPage.jsx';
 import { ToolCard } from './components/ToolCard.jsx';
 import { useJukebox } from './hooks/useJukebox.js';
 
@@ -60,7 +61,7 @@ function App() {
     if (page === 'home') {
       return (
         <>
-          <Box component="main" id="home" className="hero-section" sx={{ py: { xs: 10, md: 14 } }}>
+          <Box component="main" id="home" className="hero-section" sx={{ py: { xs: 10, md: 7 } }}>
             <Container maxWidth="lg">
               <Box className="hero-content" sx={{ mx: 'auto', maxWidth: 760, px: { xs: 2, md: 0 }, textAlign: { xs: 'left', md: 'center' } }}>
                 <Typography variant="overline" sx={{ display: 'block', mb: 3, letterSpacing: 2, color: 'secondary.main' }}>
@@ -141,16 +142,15 @@ function App() {
       );
     }
 
+    if (page === 'photography') {
+      return <PhotographyPage onBack={() => setPage('home')} />;
+    }
+
     const pageLabels = {
       products: {
         overline: 'Products',
         title: 'Product pages coming soon',
         description: 'A clean, modern product experience is being prepared. Come back soon to explore the latest tools and releases.',
-      },
-      photography: {
-        overline: 'Photography',
-        title: 'Photography coming soon',
-        description: 'A showcase of my latest work is almost ready. Check back soon for the new gallery.',
       },
     };
 
