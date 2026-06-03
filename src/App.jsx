@@ -74,7 +74,7 @@ function App() {
                   I write code and take photos.
                 </Typography>
                 <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 600, mx: { xs: 0, md: 'auto' }, mb: 4, lineHeight: 1.8 }}>
-                  Software Engineer currently working at{' '}
+                  I'm currently working at{' '}
                   <Link
                     href="https://reciteme.com/"
                     underline="none"
@@ -89,7 +89,7 @@ function App() {
                   >
                     Recite Me
                   </Link>
-                   {' '} making industry leading accessibilty tools. I also build cool stuff and take photos.
+                   {' '} as a software engineer, making industry leading accessibilty tools. I also build cool stuff and take photos.
                 </Typography>
                 <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent={{ md: 'center' }}>
                   <Button
