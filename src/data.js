@@ -1,3 +1,5 @@
+export const instagramUrl = 'https://www.instagram.com/congrieves/';
+
 export const featuredProduct = {
   overline: 'Featured product',
   title: 'Product Name',
