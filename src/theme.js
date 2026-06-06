@@ -28,8 +28,15 @@ const sharedComponents = {
   MuiButton: {
     styleOverrides: {
       root: {
-        borderRadius: 999,
+        borderRadius: 4,
         textTransform: 'none',
+      },
+    },
+  },
+  MuiIconButton: {
+    styleOverrides: {
+      root: {
+        borderRadius: 8,
       },
     },
   },

@@ -1,3 +1,16 @@
+export const instagramUrl = 'https://www.instagram.com/congrieves/';
+
+export const featuredProduct = {
+  overline: 'Featured product',
+  title: 'Terraform',
+  tagline: 'Transform your focus, one planet at a time. Coming soon to iOS and Android.',
+  description:
+    'Terraform planets by completing focus sessions. Build your solar system and healthy habits at the same time.',
+  ctaLabel: 'Release date: TBD',
+  ctaUrl: '#',
+  image: null,
+};
+
 export const projects = [
   {
     title: 'Calc.io',
