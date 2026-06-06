@@ -1,5 +1,6 @@
 import { Box, Button, Grid, Typography } from '@mui/material';
-import { ArrowForward, RocketLaunchOutlined } from '@mui/icons-material';
+import { ArrowForward } from '@mui/icons-material';
+import { FeaturedPlanet } from './FeaturedPlanet.jsx';
 
 export function FeaturedProduct({
   overline,
@@ -39,12 +40,11 @@ export function FeaturedProduct({
         <Grid item xs={12} md={6}>
           <Box
             sx={{
+              position: 'relative',
+              overflow: 'hidden',
               aspectRatio: { xs: '16 / 10', md: 'auto' },
               minHeight: { md: 320 },
               height: { md: '100%' },
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
               bgcolor: (t) =>
                 t.palette.mode === 'dark'
                   ? 'linear-gradient(135deg, rgba(107, 232, 222, 0.08) 0%, rgba(17, 21, 31, 0.6) 100%)'
@@ -66,22 +66,7 @@ export function FeaturedProduct({
                 }}
               />
             ) : (
-              <Box
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: 80,
-                  height: 80,
-                  borderRadius: 3,
-                  border: '1px dashed',
-                  borderColor: 'divider',
-                  bgcolor: (t) =>
-                    t.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.04)' : 'rgba(15, 24, 43, 0.04)',
-                }}
-              >
-                <RocketLaunchOutlined sx={{ fontSize: 36, color: 'secondary.main', opacity: 0.8 }} />
-              </Box>
+              <FeaturedPlanet />
             )}
           </Box>
         </Grid>

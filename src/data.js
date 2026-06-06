@@ -2,11 +2,11 @@ export const instagramUrl = 'https://www.instagram.com/congrieves/';
 
 export const featuredProduct = {
   overline: 'Featured product',
-  title: 'Product Name',
-  tagline: 'One-line value proposition.',
+  title: 'Terraform',
+  tagline: 'Transform your focus, one planet at a time. Coming soon to iOS and Android.',
   description:
-    'A short description of what this product does and who it is for. Swap this placeholder copy when your paid product is ready to launch.',
-  ctaLabel: 'Learn more',
+    'Terraform planets by completing focus sessions. Build your solar system and healthy habits at the same time.',
+  ctaLabel: 'Release date: TBD',
   ctaUrl: '#',
   image: null,
 };
